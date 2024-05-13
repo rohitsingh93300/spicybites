@@ -2,7 +2,7 @@
   @tailwind components;
   @tailwind utilities;
 
-  @layer base {
+ @layer base {
     :root {
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
@@ -73,7 +73,7 @@
     body {
       @apply bg-background text-foreground;
     }
-  }
+  } 
   @keyframes spin {
     from {
       transform: rotate(0deg);
@@ -85,4 +85,17 @@
   .spin {
     animation: spin 40s linear infinite;
   }
-  
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    @apply block w-full my-2 rounded-xl;
+    @apply border p-2 border-gray-300 bg-gray-100; 
+  }
+
+   button{
+    @apply block w-full text-gray-700 font-semibold;
+    @apply border border-gray-300 rounded-xl px-6 py-2;
+  }
+  button[type="submit"],button.submit{
+ @apply border-0 bg-red-500 text-white;
+  }  

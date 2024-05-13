@@ -28,9 +28,9 @@ function Header() {
             {/* nav */}
             <nav className="hidden xl:flex items-center gap-8 text-gray-500 font-semibold">
               <Link href={'/'}>Home</Link>
-              <Link href={'/'}>Menu</Link>
-              <Link href={'/'}>About</Link>
-              <Link href={'/'}>Contact</Link>
+              <Link href={'/menu'}>Menu</Link>
+              <Link href={'/about'}>About</Link>
+              <Link href={'/contact'}>Contact</Link>
             </nav>
           
             {/* mobile nav */}
@@ -40,7 +40,7 @@ function Header() {
           </div>
           <nav className=' hidden xl:flex gap-8 items-center  text-gray-500 font-semibold'>
               <Link href={'/login'}>Login</Link>
-              <Link href={'/'} className="bg-red-500 rounded-full text-white px-4 py-2">Register</Link>
+              <Link href={'/register'} className="bg-red-500 rounded-full text-white px-4 py-2">Register</Link>
             </nav>
         </div>
       </div>
