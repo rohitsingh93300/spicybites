@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-       {/* <link rel="icon" href="/chili-pepper.png" sizes="any" /> */}
+       <link rel="icon" href="/chili-pepper.png" sizes="any" />
       <body className={roboto.className}>
         <main className=" mx-auto w-full ">
           <Header/>
