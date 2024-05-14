@@ -20,7 +20,7 @@ const MobileNav = () => {
                             </div>
                         </Link>
                         <nav className="flex flex-col items-center gap-y-6 text-gray-500 font-semibold">
-                            <Link href={'/'}>Home</Link>
+                            {/* <Link href={'/'}>Home</Link> */}
                             <Link href={'/'}>Menu</Link>
                             <Link href={'/'}>About</Link>
                             <Link href={'/'}>Contact</Link>
