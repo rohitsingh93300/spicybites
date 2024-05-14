@@ -92,6 +92,12 @@
     @apply border p-2 border-gray-300 bg-gray-100; 
   }
 
+  input[type="email"]:disabled ,
+  input[type="password"]:disabled ,
+  input[type="text"]:disabled {
+    @apply bg-gray-300;
+  }
+
   label{
     @apply text-gray-500 text-sm leading-tight;
 }
@@ -105,4 +111,7 @@ label + input{
   }
   button[type="submit"],button.submit{
  @apply border-0 bg-red-500 text-white;
+  }  
+  button[type="submit"]:disabled ,button:disabled{
+ @apply cursor-not-allowed bg-red-400
   }  
