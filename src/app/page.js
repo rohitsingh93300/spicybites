@@ -5,7 +5,7 @@
 
 import Hero from "../components/Hero"
 import Testimonial from "../components/Testimonial"
-import KeyFeatures from "../components/Keyfeatures";
+import KeyFeatures from "../components/KeyFeatures";
 import PopularDishes from "../components/PopularDishes";
 
 
