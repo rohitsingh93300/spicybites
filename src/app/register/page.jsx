@@ -40,6 +40,7 @@ function RegisterPage() {
             Login with Google
         </button>
        </form>
+       <p className='mt-4 text-gray-500 text-center'>Already have an account?{" "}<span className='underline'>Login</span></p>
       </div>
     </section>
   )
