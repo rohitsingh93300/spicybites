@@ -1,9 +1,10 @@
 import { SheetContent, Sheet, SheetTrigger } from '../components/ui/sheet'
 import { AlignJustify } from 'lucide-react'
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const MobileNav = () => {
+const MobileNav = ({status}) => {
     return (
         <Sheet>
             <SheetTrigger aschild>
@@ -24,8 +25,15 @@ const MobileNav = () => {
                             <Link href={'/'}>Menu</Link>
                             <Link href={'/'}>About</Link>
                             <Link href={'/'}>Contact</Link>
-                            <Link href={'/login'} className="" >Login</Link>
-                            <Link href={'/register'} className="bg-red-500 rounded-full text-white px-4 py-2">Register</Link>
+                            {status === 'authenticated' && (
+                                <button onClick={()=>signOut()} className="bg-red-500 rounded-full text-white px-4 py-2">Logout</button>
+                            )}
+                            {status === 'unauthenticated' && (
+                              <>
+                                <Link href={'/login'} className="" >Login</Link>
+                                <Link href={'/register'} className="bg-red-500 rounded-full text-white px-4 py-2">Register</Link>
+                                </>
+                            )}
                         </nav>
                     </div>
                     {/* <Socials containerStyles='flex  gap-x-4' iconsStyles='text-2xl' /> */}

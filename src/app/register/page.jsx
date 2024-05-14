@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+// import { redirect } from 'next/navigation'
 import React, { useState } from 'react'
 
 function RegisterPage() {
@@ -22,6 +23,7 @@ function RegisterPage() {
         console.log(ok)
         if(ok){
           setUserCreated(true)
+          // redirect('/login')
         }
         if(!ok){
           setError(true)

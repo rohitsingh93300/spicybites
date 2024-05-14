@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import {AppProvider} from "../components/AppContext"
 
 
 import Header from "../components/Header";
@@ -17,11 +18,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
        <link rel="icon" href="/chili-pepper.png" sizes="any" />
       <body className={roboto.className}>
+        <AppProvider>
         <main className=" mx-auto w-full ">
        <Header/>
         {children}
         <Footer/>
         </main>
+        </AppProvider>
         </body>
     </html>
   );

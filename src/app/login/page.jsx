@@ -12,7 +12,7 @@ function LoginPage() {
     // const [error, setError] = useState(false)
     const handleFormSubmit = async(e)=>{
         e.preventDefault();
-        await signIn('credentials',{email, password})
+        await signIn('credentials',{email, password, callbackUrl:'/'})
     }
     return (
         <section className='pt-14 '>
