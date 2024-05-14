@@ -1,7 +1,9 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const roboto = Roboto({ subsets: ["latin"], weight:['400','500','700'] });
 
@@ -16,7 +18,7 @@ export default function RootLayout({ children }) {
        <link rel="icon" href="/chili-pepper.png" sizes="any" />
       <body className={roboto.className}>
         <main className=" mx-auto w-full ">
-          <Header/>
+       <Header/>
         {children}
         <Footer/>
         </main>

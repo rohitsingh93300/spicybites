@@ -13,6 +13,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.378.0",
+    "mongoose": "^8.3.4",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",
@@ -21,6 +22,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/node": "20.12.11",
+    "@types/react": "18.3.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",

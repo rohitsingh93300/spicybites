@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "../components/ui/badge"
 
 function Hero() {
   return (
@@ -10,7 +10,7 @@ function Hero() {
     <div className='grid grid-cols-1 md:grid-cols-2'>
         {/* text */}
         
-        <div className='flex flex-col gap-4 justify-center'>
+        <div className='flex flex-col gap-4 justify-center text-center md:text-left md:items-start items-center'>
         {/* <div className='flex gap-1 items-center'>
                 <Image src={'/playstore.png'} width={100} height={100} alt='playstore'/>
                 <Image src={'/appstore.png'} width={100} height={100} alt='appstore'/>
@@ -25,7 +25,7 @@ function Hero() {
             </h1>
             <p className='text-gray-500'>Discover a world of culinary delights with our food delivery service. Enjoy fast, reliable delivery and a wide selection of mouthwatering dishes.</p>
             <div className='flex gap-2'>
-                <button className='bg-red-500 gap-1 flex items-center text-white px-4 py-2 rounded-full tracking-tight'>Order Now
+                <button className='bg-red-500 gap-1 flex items-center text-white px-4 py-2 rounded-full '>Order Now
                 <Image src={'/right-arrow.png'} height={18} width={18}/>
                 </button>
                 <button className='bg-gray-300 hover:bg-white border flex items-center gap-1  px-4 py-2 rounded-full tracking-tight delay-75'>Contact Now
