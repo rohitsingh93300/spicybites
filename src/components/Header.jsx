@@ -48,7 +48,7 @@ function Header() {
           </div>
           {status === 'authenticated' && (
             <div className='flex gap-8 items-center'>
-            <Link href={'/profile'}>hey😘 {email}</Link>
+            <Link href={'/profile'}>hellow {email}</Link>
             <button onClick={()=>signOut()}  className="bg-red-500 rounded-full text-white px-4 py-2">Logout</button>
             </div>
           )}
