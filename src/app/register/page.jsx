@@ -1,4 +1,5 @@
 'use client'
+import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 // import { redirect } from 'next/navigation'
@@ -65,8 +66,8 @@ function RegisterPage() {
         type='submit' 
         className='submit mt-4 button'>Register</button>
         <div className='my-4 text-center text-gray-500 '>or login with provider</div>
-        <button className='flex w-full gap-4 justify-center border border-gray-300 rounded-xl px-6 py-2 '>
-            <Image src={'/google.png'} width={24} height={24}/>
+        <button onClick={()=>signIn('google',{callbackUrl:'/'})} className='flex w-full gap-4 justify-center border border-gray-300 rounded-xl px-6 py-2 '>
+            <Image alt='google' src={'/google.png'} width={24} height={24}/>
             Login with Google
         </button>
        </form>

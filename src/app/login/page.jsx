@@ -12,8 +12,10 @@ function LoginPage() {
     // const [error, setError] = useState(false)
     const handleFormSubmit = async(e)=>{
         e.preventDefault();
+        // setLoader(true)
         await signIn('credentials',{email, password, callbackUrl:'/'})
     }
+    // setLoader(false)
     return (
         <section className='pt-14 '>
           <div className='border-red-50 border max-w-md py-8 rounded-3xl shadow-sm shadow-red-100 mx-auto'>
@@ -49,8 +51,8 @@ function LoginPage() {
             type='submit' 
             className='submit mt-4 button'>Sign In</button>
             <div className='my-4 text-center text-gray-500 '>or login with provider</div>
-            <button className='flex w-full gap-4 justify-center border border-gray-300 rounded-xl px-6 py-2 '>
-                <Image src={'/google.png'} width={24} height={24}/>
+            <button type='button' onClick={()=>signIn('google',{callbackUrl:'/'})} className='flex w-full gap-4 justify-center border border-gray-300 rounded-xl px-6 py-2 '>
+                <Image alt='google' src={'/google.png'} width={24} height={24}/>
                 Login with Google
             </button>
            </form>

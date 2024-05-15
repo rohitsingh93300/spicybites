@@ -10,6 +10,10 @@ function Header() {
   const session = useSession()
   console.log(session)
   const status = session.status
+  const profile = session?.data?.user
+  console.log(profile)
+  const userName = profile?.name
+  const email = profile?.email
   useEffect(() => {
     const scrollYPos = window.addEventListener('scroll', () => {
       window.scrollY > 50 ? setHeader(true) : setHeader(false);
@@ -43,7 +47,10 @@ function Header() {
             </div>
           </div>
           {status === 'authenticated' && (
+            <div className='flex gap-8 items-center'>
+            <Link href={'/profile'}>hello {email}</Link>
             <button onClick={()=>signOut()}  className="bg-red-500 rounded-full text-white px-4 py-2">Logout</button>
+            </div>
           )}
           {status === 'unauthenticated' && (
           <nav className=' hidden xl:flex gap-8 items-center  text-gray-500 font-semibold'>
