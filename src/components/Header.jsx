@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import MobileNav from './MobileNav';
 import { signOut, useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
 
 function Header() {
   const [header, setHeader] = useState(false);
@@ -14,6 +15,8 @@ function Header() {
   console.log(profile)
   const userName = profile?.name
   const email = profile?.email
+  const name = email?.split('@')[0]
+  const path = usePathname()
   useEffect(() => {
     const scrollYPos = window.addEventListener('scroll', () => {
       window.scrollY > 50 ? setHeader(true) : setHeader(false);
@@ -42,14 +45,20 @@ function Header() {
             </nav>
           
             {/* mobile nav */}
-            <div className='xl:hidden'>
+            <div className='xl:hidden flex gap-3 items-center'>
+            {status === 'authenticated' && (
+            <div className='flex gap-8 items-center'>
+            <Link href={'/profile'} className='text-xs'>hello {name}</Link>
+            <button onClick={()=>signOut()}  className="bg-red-500 rounded-full hidden xl:flex text-white px-4 py-2">Logout</button>
+            </div>
+          )}
               <MobileNav status={status} />
             </div>
           </div>
           {status === 'authenticated' && (
-            <div className='flex gap-8 items-center'>
-            <Link href={'/profile'}>hello {email}</Link>
-            <button onClick={()=>signOut()}  className="bg-red-500 rounded-full text-white px-4 py-2">Logout</button>
+            <div className='hidden xl:flex gap-8 items-center'>
+            <Link className={path ==='/profile'?'active':''} href={'/profile'}>hello {name}</Link>
+            <button onClick={()=>signOut()}  className="bg-red-500 rounded-full  text-white px-4 py-2">Logout</button>
             </div>
           )}
           {status === 'unauthenticated' && (
