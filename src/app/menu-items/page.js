@@ -23,7 +23,9 @@ export default function MenuItemsPage() {
 
 
     if (loading) {
-        return 'Loading user info...'
+        return <div className="grid place-items-center h-[400px]">
+            <Image className="w-[300px]" src={'/foodLoader.gif'} alt='foodloading' height={100} width={100} />
+        </div>
     }
     if (!data.admin) {
         return 'Not an admin'
@@ -43,14 +45,14 @@ export default function MenuItemsPage() {
                 <h2 className='text-sm text-gray-500 mt-8'>Edit menu item:</h2>
                 <div className='grid grid-cols-3 gap-2'>
                     {menuItems?.length > 0 && menuItems.map(item => (
-                        <Link 
-                        key={item._id}
-                        href={'/menu-items/edit/' + item._id} className='bg-gray-200  rounded-lg p-4 '>
+                        <Link
+                            key={item._id}
+                            href={'/menu-items/edit/' + item._id} className='bg-gray-200  rounded-lg p-4 '>
                             <div className='relative'>
                                 <Image className='rounded-md' src={item.image} alt='menu-item' width={200} height={200} />
                             </div>
                             <div className='text-center'>
-                            {item.name}
+                                {item.name}
                             </div>
                         </Link>
                     ))}

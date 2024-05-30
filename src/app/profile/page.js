@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 // import SuccessBox from "@/components/SuccessBox"
 import toast from "react-hot-toast";
 import UserTabs from "@/components/UserTabs"
+import Image from "next/image";
 
 
 
@@ -54,7 +55,9 @@ function ProfilePage() {
     }
 
     if (status === 'loading' || !profileFetched) {
-        return 'Loading...';
+        return <div className="grid place-items-center h-[400px]">
+            <Image className="w-[300px]" src={'/foodLoader.gif'} alt='foodloading' height={100} width={100}/>
+        </div>
     }
     if (status === 'unauthenticated') {
         return redirect('/login');

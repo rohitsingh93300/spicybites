@@ -4,6 +4,7 @@ import { CartContext, cartProductPrice } from "@/components/AppContext"
 import { useParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react"
 import CartProduct from "@/components/CartProduct";
+import Image from "next/image";
 
 export default function OrderPage() {
 
@@ -45,7 +46,9 @@ export default function OrderPage() {
                 </div>
             </div>
             {loadingOrder && (
-                <div>Loading order...</div>
+                <div className="grid place-items-center h-[400px]">
+                <Image className="w-[300px]" src={'/foodLoader.gif'} alt='foodloading' height={100} width={100}/>
+            </div>
             )}
             {order && (
                 <div className="grid md:grid-cols-2 md:gap-16 mt-8 px-4 md:px-0">

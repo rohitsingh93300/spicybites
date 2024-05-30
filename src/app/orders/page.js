@@ -4,6 +4,7 @@ import UserTabs from "@/components/UserTabs";
 import { useEffect, useState } from "react"
 import dbTimeForHuman from "@/lib/datetime"
 import Link from "next/link";
+import Image from "next/image";
 
 export default function OrdersPage() {
 
@@ -30,7 +31,9 @@ export default function OrdersPage() {
           <UserTabs isAdmin={profile.admin} />
           <div className="mt-8">
             {loadingOrders && (
-              <div>Loading orders...</div>
+              <div className="grid place-items-center h-[400px]">
+              <Image className="w-[300px]" src={'/foodLoader.gif'} alt='foodloading' height={100} width={100}/>
+          </div>
             )}
             {orders?.length > 0 && orders.map(order => (
               <div

@@ -5,6 +5,7 @@ import { useProfile } from '../../components/UseProfile'
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import DeleteButton from "@/components/DeleteButton"
+import Image from "next/image";
 
 function CategoriesPage() {
 
@@ -77,7 +78,9 @@ function CategoriesPage() {
 
 
     if (profileLoading) {
-        return 'Loading user info...'
+        return <div className="grid place-items-center h-[400px]">
+        <Image className="w-[300px]" src={'/foodLoader.gif'} alt='foodloading' height={100} width={100}/>
+    </div>
     }
 
     if (!profileData.admin) {
