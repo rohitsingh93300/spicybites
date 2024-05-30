@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { Badge } from "../components/ui/badge"
+import Link from 'next/link'
 
 function Hero() {
     return (
@@ -21,13 +22,15 @@ function Hero() {
                             </h1>
                             <p className='text-gray-500'>Discover a world of culinary delights with our food delivery service. Enjoy fast, reliable delivery and a wide selection of mouthwatering dishes.</p>
                         </div>
-                        <div className=' flex gap-2 w-full h-[45px]'>
-                            <button className=' primary rounded-full px-0 flex items-center '>Order Now
-                                <Image src={'/right-arrow.png'} height={18} width={18} />
-                            </button>
-                            <button className='bg-gray-300 hover:bg-white border flex px-2 items-center gap-1   rounded-full  delay-75'>Contact Now
-                                <Image src={'/contact.png'} height={18} width={18} />
-                            </button>
+                        <div className=' flex justify-center md:justify-start gap-2 w-full'>
+                            <Link href={'/menu'} className=' bg-red-500 text-white rounded-full px-3 py-2 gap-1 flex items-center'>
+                                Order Now
+                                <Image src={'/right-arrow.png'} height={18} width={18} alt='arrow' />
+                            </Link>
+                            <Link href={'#contact'} className='bg-gray-300 hover:bg-white border flex px-3 py-2 items-center gap-1 rounded-full delay-75'>
+                                Contact Now
+                                <Image src={'/contact.png'} height={18} width={18} alt='send'/>
+                            </Link>
                         </div>
 
 
@@ -37,7 +40,7 @@ function Hero() {
                     <div className='flex items-center justify-center relative'>
                         <Image src={'/hero-food.png'} width={400} height={500} alt='food' className='spin w-[265px] md:w-[400px]' />
                         <Badge variant="outline" className='bg-red-50 gap-1 text-lg  absolute bottom-16 right-4'>
-                            <Image src={'/time.png'} width={25} height={25} />
+                            <Image src={'/time.png'} width={25} height={25} alt='time' />
                             <p className='leading-4 text-sm'>Super Fast<br /> Delivery</p>
                         </Badge>
                         <Badge variant="outline" className='bg-red-50 leading-none py-1 flex flex-col gap-1 text-lg  absolute top-10 right-4'>

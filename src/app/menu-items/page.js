@@ -36,7 +36,7 @@ export default function MenuItemsPage() {
                     className='button flex'
                     href={'/menu-items/new'}>
                     Create new menu item
-                    <Image src={'/right.png'} width={25} height={10} />
+                    <Image src={'/right.png'} width={25} height={10} alt='right' />
                 </Link>
             </div>
             <div className='px-4 md:px-0'>

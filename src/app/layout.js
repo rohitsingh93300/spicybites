@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
        <link rel="icon" href="/chili-pepper.png" sizes="any" />
       <body className={roboto.className}>
         <AppProvider>

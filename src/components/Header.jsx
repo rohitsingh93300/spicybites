@@ -67,7 +67,7 @@ function Header() {
         {/* MobileNav */}
         <div className='flex md:hidden justify-between'>
           <Link href="/" className="text-primary font-semibold flex gap-1">
-            <Image src={'/chili-pepper.png'} width={24} height={24} />
+            <Image src={'/chili-pepper.png'} width={24} height={24} alt='chilli' />
             <div className='text-red-500'>
               Spicy
               <span className="text-gray-800 font-semibold">Bites</span>
@@ -92,8 +92,8 @@ function Header() {
         className='md:hidden p-4  bg-gray-200 rounded-lg mt-2 flex flex-col gap-2 text-center'>
           <Link href={'/'}>Home</Link>
           <Link href={'/menu'}>Menu</Link>
-          <Link href={'/about'}>About</Link>
-          <Link href={'/contact'}>Contact</Link>
+          <Link href={'#about'}>About</Link>
+          <Link href={'#contact'}>Contact</Link>
           <AuthLinks status={status} userName={userName}/> 
         </div>
 
@@ -113,8 +113,8 @@ function Header() {
             <nav className="flex items-center gap-8 text-gray-500 font-semibold">
               <Link href={'/'}>Home</Link>
               <Link href={'/menu'}>Menu</Link>
-              <Link href={'/about'}>About</Link>
-              <Link href={'/contact'}>Contact</Link>
+              <Link href={'#about'}>About</Link>
+              <Link href={'#contact'}>Contact</Link>
             </nav>
 
 
