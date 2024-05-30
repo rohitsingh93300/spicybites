@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+// import { authOptions } from "../auth/[...nextauth]/route";
+import {authOptions} from "@/components/auth"
 import { Order } from '@/models/Order'
 import { MenuItem } from '@/models/MenuItem'
 const stripe = require('stripe')(process.env.STRIPE_SK);
