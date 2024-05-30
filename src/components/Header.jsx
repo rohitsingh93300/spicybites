@@ -1,22 +1,58 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import MobileNav from './MobileNav';
 import { signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
+import { CartContext } from './AppContext';
+import ShoppingCart from "@/components/ShoppingCart"
+import Bars from "@/components/Bars"
+
+
+function AuthLinks({ status, userName }) {
+  if (status === 'authenticated') {
+    return (
+      <>
+        <Link href={'/profile'} className="whitespace-nowrap">
+          Hello, {userName}
+        </Link>
+        <button
+          onClick={() => signOut()}
+          className="bg-red-500 rounded-full text-white px-8 py-2">
+          Logout
+        </button>
+      </>
+    );
+  }
+  if (status === 'unauthenticated') {
+    return (
+      <>
+        <Link href={'/login'}>Login</Link>
+        <Link href={'/register'} className="bg-red-500 rounded-full text-white px-8 py-2">
+          Register
+        </Link>
+      </>
+    );
+  }
+}
 
 function Header() {
   const [header, setHeader] = useState(false);
   const session = useSession()
-  console.log(session)
   const status = session.status
   const profile = session?.data?.user
-  console.log(profile)
-  const userName = profile?.name
+  let userName = profile?.name || profile?.email;
   const email = profile?.email
+  const image = profile?.image
   const name = email?.split('@')[0]
+  const { cartProducts } = useContext(CartContext)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  if (userName && userName.includes(' ')) {
+    userName = userName.split(' ')[0];
+  }
   const path = usePathname()
+
   useEffect(() => {
     const scrollYPos = window.addEventListener('scroll', () => {
       window.scrollY > 50 ? setHeader(true) : setHeader(false);
@@ -24,10 +60,47 @@ function Header() {
     //remove event
     return () => window.removeEventListener('scroll', scrollYPos)
   })
+
   return (
     <header className={`sticky container mx-auto top-0 z-30 transition-all ${header ? 'py-4 bg-white shadow-lg ' : 'py-6'} `}>
       <div className=" ">
-        <div className='flex justify-between items-center'>
+        {/* MobileNav */}
+        <div className='flex md:hidden justify-between'>
+          <Link href="/" className="text-primary font-semibold flex gap-1">
+            <Image src={'/chili-pepper.png'} width={24} height={24} />
+            <div className='text-red-500'>
+              Spicy
+              <span className="text-gray-800 font-semibold">Bites</span>
+            </div>
+          </Link>
+          <div className='flex gap-8'>
+            <Link href={'/cart'} className='relative ml-2'>
+              <ShoppingCart />
+              {cartProducts?.length > 0 && (
+
+                <span className='absolute -top-2 -right-4 bg-red-500 text-white text-xs py-1 px-2 rounded-full leading-3'>{cartProducts.length}</span>
+              )}
+            </Link>
+            <button className='' onClick={() => setMobileNavOpen(prev => !prev)}>
+              <Bars />
+            </button>
+          </div>
+        </div>
+        {mobileNavOpen && (
+        <div 
+        onClick={()=> setMobileNavOpen(false)}
+        className='md:hidden p-4  bg-gray-200 rounded-lg mt-2 flex flex-col gap-2 text-center'>
+          <Link href={'/'}>Home</Link>
+          <Link href={'/menu'}>Menu</Link>
+          <Link href={'/about'}>About</Link>
+          <Link href={'/contact'}>Contact</Link>
+          <AuthLinks status={status} userName={userName}/> 
+        </div>
+
+        )}
+
+        {/* computerNav */}
+        <div className='hidden md:flex justify-between items-center'>
           <Link href="/" className="text-primary font-semibold flex gap-1">
             <Image src={'/chili-pepper.png'} width={24} height={24} />
             <div className='text-red-500'>
@@ -37,37 +110,26 @@ function Header() {
           </Link>
           <div className='flex items-center gap-x-6'>
             {/* nav */}
-            <nav className="hidden xl:flex items-center gap-8 text-gray-500 font-semibold">
+            <nav className="flex items-center gap-8 text-gray-500 font-semibold">
               <Link href={'/'}>Home</Link>
               <Link href={'/menu'}>Menu</Link>
               <Link href={'/about'}>About</Link>
               <Link href={'/contact'}>Contact</Link>
             </nav>
-          
-            {/* mobile nav */}
-            <div className='xl:hidden flex gap-3 items-center'>
-            {status === 'authenticated' && (
-            <div className='flex gap-8 items-center'>
-            <Link href={'/profile'} className='text-xs'>hello {name}</Link>
-            <button onClick={()=>signOut()}  className="bg-red-500 rounded-full hidden xl:flex text-white px-4 py-2">Logout</button>
-            </div>
-          )}
-              <MobileNav status={status} />
-            </div>
-          </div>
-          {status === 'authenticated' && (
-            <div className='hidden xl:flex gap-8 items-center'>
-            <Link className={path ==='/profile'?'active':''} href={'/profile'}>hello {name}</Link>
-            <button onClick={()=>signOut()}  className="bg-red-500 rounded-full  text-white px-4 py-2">Logout</button>
-            </div>
-          )}
-          {status === 'unauthenticated' && (
-          <nav className=' hidden xl:flex gap-8 items-center  text-gray-500 font-semibold'>
-              <Link href={'/login'}>Login</Link>
-              <Link href={'/register'} className="bg-red-500 rounded-full text-white px-4 py-2">Register</Link>
-            </nav>
 
-          )}
+
+          </div>
+          <nav className='flex items-center gap-1'>
+            <AuthLinks status={status} userName={userName} />
+
+            <Link href={'/cart'} className='relative ml-2'>
+              <ShoppingCart />
+              {cartProducts?.length > 0 && (
+
+                <span className='absolute -top-2 -right-4 bg-red-500 text-white text-xs py-1 px-2 rounded-full leading-3'>{cartProducts.length}</span>
+              )}
+            </Link>
+          </nav>
         </div>
       </div>
     </header>

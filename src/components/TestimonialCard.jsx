@@ -7,7 +7,7 @@ function TestimonialCard() {
           <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950">
             <div className="flex items-center justify-center gap-1">
               <div className="">
-                <Image alt="@shadcn" src="/tomato.png" width={20} height={10} />
+                <Image alt="shadcn" src="/tomato.png" width={20} height={10} />
               </div>
               <div className="">
                 <div className="font-semibold">Sarah Johnson</div>

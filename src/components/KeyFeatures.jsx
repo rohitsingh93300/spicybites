@@ -9,7 +9,7 @@ function KeyFeatures() {
     <div className='grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2'>
         {/* image */}
         <div className='flex items-center justify-center relative '>
-            <Image  src={'/chef.png'} width={200} height={200} alt='food' className='' />
+            <Image  src={'/chef.png'} width={200} height={200} alt='food' className='z-0' />
             {/* <Badge variant="outline" className='border-none py-1 gap-1 text-lg  absolute top-2 left-16'>
             <Image src={'/baigan.png'} width={30} height={30} />
             </Badge>
