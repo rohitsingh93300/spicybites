@@ -2,12 +2,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import MobileNav from './MobileNav';
 import { signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { CartContext } from './AppContext';
 import ShoppingCart from "@/components/ShoppingCart"
 import Bars from "@/components/Bars"
+
 
 
 function AuthLinks({ status, userName }) {
@@ -76,7 +76,7 @@ function Header() {
           <div className='flex gap-8'>
             <Link href={'/cart'} className='relative ml-2'>
               <ShoppingCart />
-              {cartProducts?.length > 0 && (
+              {(cartProducts?.length > 0 && status === 'authenticated') && (
 
                 <span className='absolute -top-2 -right-4 bg-red-500 text-white text-xs py-1 px-2 rounded-full leading-3'>{cartProducts.length}</span>
               )}
@@ -124,10 +124,11 @@ function Header() {
 
             <Link href={'/cart'} className='relative ml-2'>
               <ShoppingCart />
-              {cartProducts?.length > 0 && (
+              {(cartProducts?.length > 0 && status === 'authenticated') && (
 
                 <span className='absolute -top-2 -right-4 bg-red-500 text-white text-xs py-1 px-2 rounded-full leading-3'>{cartProducts.length}</span>
               )}
+              
             </Link>
           </nav>
         </div>

@@ -8,9 +8,14 @@ import { useProfile } from "@/components/UseProfile"
 import toast from "react-hot-toast"
 import Link from "next/link"
 import CartProduct from "@/components/CartProduct"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export default function CartPage() {
     const { cartProducts, removeCartProduct } = useContext(CartContext)
+    const session = useSession()
+    const status = session?.status
+    const router = useRouter()
     const [address, setAddress] = useState({})
     const { data: profileData } = useProfile()
 
@@ -74,9 +79,20 @@ export default function CartPage() {
             </section>
         )
     }
+    if(status === 'unauthenticated'){
+       return <div className="grid place-items-center h-[80vh]">
+         <div className="space-y-8">
+         <h1 className="text-3xl font-semibold">
+            Login to Add to Cart😅
+         </h1>
+         <Link href={'/login'} className=" button">Login</Link>
+         </div>
+       </div>
+    }
     return (
         <section className="mt-12">
             <h1 className='text-center text-4xl font-semibold '>Checkout</h1>
+
             <div className="grid md:gap-8 md:grid-cols-2 mt-8 mx-auto max-w-4xl px-4 md:px-0">
                 <div>
                     {cartProducts?.length === 0 && (
@@ -86,7 +102,7 @@ export default function CartPage() {
                        <CartProduct 
                        key={index}
                        product={product} 
-                       onRemove={removeCartProduct}/>
+                       onRemove={()=>removeCartProduct(index)}/>
                     ))}
                     <div className="py-4 justify-end pr-16 flex items-center">
                         <div className="text-gray-500">
