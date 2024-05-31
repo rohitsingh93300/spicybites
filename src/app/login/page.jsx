@@ -3,10 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import {signIn} from "next-auth/react"
+import Eye from "@/components/Eye"
+import EyeSlash from "@/components/EyeSlash"
 
 function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [visible, setVisible] = useState(false)
     const [loader, setLoader] = useState(false)
     // const [userCreated, setUserCreated] = useState(false) 
     // const [error, setError] = useState(false)
@@ -40,12 +43,19 @@ function LoginPage() {
             placeholder='Email' 
             className='input' />
             <label className='text-start'>Password</label>
+            <div className='flex justify-between items-center relative'>
             <input 
             disabled={loader}
             onChange={(e)=>setPassword(e.target.value)}
-            type='password' 
+            type= {visible ? 'text':'password'} 
             placeholder='password' 
-            className='input' />
+            className='input' 
+            
+            />
+            <div className='p-2 absolute right-2 bottom-2 cursor-pointer' onClick={()=>setVisible(!visible)}>
+               {visible ? <Eye/> : <EyeSlash/>}
+            </div>
+            </div>
             <button 
             disabled={loader}
             type='submit' 

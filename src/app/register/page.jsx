@@ -5,10 +5,13 @@ import Link from 'next/link'
 // import { redirect } from 'next/navigation'
 import {useRouter} from 'next/navigation'
 import React, { useState } from 'react'
+import Eye from "@/components/Eye"
+import EyeSlash from "@/components/EyeSlash"
 
 function RegisterPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [visible,setVisible] = useState(false)
     const [loader, setLoader] = useState(false)
     const [userCreated, setUserCreated] = useState(false) 
     const [error, setError] = useState(false)
@@ -60,12 +63,19 @@ function RegisterPage() {
         placeholder='Email' 
         className='input' />
         <label className='text-start'>Password</label>
-        <input 
-        disabled={loader}
-        onChange={(e)=>setPassword(e.target.value)}
-        type='password' 
-        placeholder='password' 
-        className='input' />
+        <div className='flex justify-between items-center relative'>
+            <input 
+            disabled={loader}
+            onChange={(e)=>setPassword(e.target.value)}
+            type= {visible ? 'text':'password'} 
+            placeholder='password' 
+            className='input' 
+            
+            />
+            <div className='p-2 absolute right-2 bottom-2 cursor-pointer' onClick={()=>setVisible(!visible)}>
+               {visible ? <Eye/> : <EyeSlash/>}
+            </div>
+            </div>
         <button 
         disabled={loader}
         type='submit' 

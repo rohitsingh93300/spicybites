@@ -75,7 +75,7 @@ export default function CartPage() {
             <section className="mt-12 text-center max-w-2xl mx-auto">
                 <h1 className='text-center text-4xl font-semibold '>Cart</h1>
                 <p className="my-4">Your Shopping cart is empty 😔</p>
-                <Link href={'/menu-items'} className=" bg-red-500 px-3 py-2 rounded-full text-white">Order Now</Link>
+                <Link href={'/menu'} className=" bg-red-500 px-3 py-2 rounded-full text-white">Order Now</Link>
             </section>
         )
     }
