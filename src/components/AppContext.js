@@ -39,7 +39,7 @@ export function AppProvider({ children }) {
     setCartProducts(prevCartProducts => {
       const newCartProducts = prevCartProducts.filter((v, index)=> index !== indexToRemove)
       saveCartProductsToLocalStorage(newCartProducts)
-      return newCartProducts
+      return newCartProducts;
     });
     toast.success('Product removed')
   }

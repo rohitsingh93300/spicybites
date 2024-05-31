@@ -3,6 +3,7 @@ import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 // import { redirect } from 'next/navigation'
+import {useRouter} from 'next/navigation'
 import React, { useState } from 'react'
 
 function RegisterPage() {
@@ -11,6 +12,9 @@ function RegisterPage() {
     const [loader, setLoader] = useState(false)
     const [userCreated, setUserCreated] = useState(false) 
     const [error, setError] = useState(false)
+
+    const router = useRouter();
+
     const handleFormSubmit = async(e)=>{
         e.preventDefault();
         setLoader(true)
@@ -24,7 +28,8 @@ function RegisterPage() {
         console.log(ok)
         if(ok){
           setUserCreated(true)
-          // redirect('/login')
+          //  redirect('/login')
+          router.push('/login')
         }
         if(!ok){
           setError(true)
