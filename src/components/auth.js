@@ -10,7 +10,7 @@ import { User } from "@/models/User";
 
 export const authOptions = {
     secret:process.env.SECRET,
-     adapter: MongoDBAdapter(clientPromise),  
+    //  adapter: MongoDBAdapter(clientPromise),  
       providers: [
         GoogleProvider({
           clientId: process.env.GOOGLE_CLIENT_ID,
