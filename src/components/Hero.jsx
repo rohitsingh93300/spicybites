@@ -20,7 +20,7 @@ function Hero() {
                                 </span>
                                 Meals Delivered to Your Doorsteps.
                             </h1>
-                            <p className='text-gray-500'>Discover a world of culinary delights with our food delivery service. Enjoy fast, reliable delivery and a wide selection of mouthwatering dishes.</p>
+                            <p className='text-gray-500 md:mt-5'>Discover a world of culinary delights with our food delivery service. Enjoy fast, reliable delivery and a wide selection of mouthwatering dishes.</p>
                         </div>
                         <div className=' flex justify-center md:justify-start gap-2 w-full'>
                             <Link href={'/menu'} className=' bg-red-500 text-white rounded-full px-3 py-2 gap-1 flex items-center'>
