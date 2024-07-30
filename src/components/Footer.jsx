@@ -18,7 +18,7 @@ function Footer() {
       {/* <Image className='relative w-full' src={'/FooterImg.jpg'} layout='fill' objectFit='contain'/> */}
       <div className='flex items-center justify-between'>
       <p className='text-center text-sm text-gray-500 p-4'>@2024 Rohit singh. All right reserved.</p>
-      <p>Designed By <Link to="https://www.webelitebuilders.com">Webelite Builders</Link></p>
+      <p>Designed By <Link href="/https://www.webelitebuilders.com">Webelite Builders</Link></p>
       </div>
      
     </section>
