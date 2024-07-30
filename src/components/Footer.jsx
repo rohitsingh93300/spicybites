@@ -1,6 +1,6 @@
 import React from 'react'
 // import FooterBg from "public/FooterImg.jpg"
-import Link from 'next/link'
+
 
 
 // const backgroundStyle = {
@@ -18,7 +18,7 @@ function Footer() {
       {/* <Image className='relative w-full' src={'/FooterImg.jpg'} layout='fill' objectFit='contain'/> */}
       <div className='flex items-center justify-between'>
       <p className='text-center text-sm text-gray-500 p-4'>@2024 Rohit singh. All right reserved.</p>
-      <p>Designed By <Link href="/https://www.webelitebuilders.com">Webelite Builders</Link></p>
+      <p>Designed By <a href="https://www.webelitebuilders.com">Webelite Builders</a></p>
       </div>
      
     </section>
